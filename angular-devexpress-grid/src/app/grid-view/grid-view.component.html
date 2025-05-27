@@ -1,0 +1,30 @@
+<dx-data-grid
+  [dataSource]="dataSource"
+  [showBorders]="true"
+  [editing]="{ mode: 'popup', allowUpdating: true }"
+  [columns]="[
+    { dataField: 'id', caption: 'ID', allowEditing: false },
+    { 
+      dataField: 'firstField', 
+      caption: 'First Field',
+      dataType: 'boolean',
+      editorType: 'dxCheckBox'
+    },
+    { 
+      dataField: 'secondField', 
+      caption: 'Second Field',
+      dataType: 'boolean',
+      editorType: 'dxCheckBox',
+      visible: showSecondField
+    },
+    { 
+      dataField: 'thirdField', 
+      caption: 'Third Field',
+      dataType: 'boolean',
+      editorType: 'dxCheckBox',
+      visible: showThirdField
+    }
+  ]"
+  (onEditorPreparing)="onEditorPreparing($event)"
+  (onRowUpdating)="onRowUpdating($event)">
+</dx-data-grid>
