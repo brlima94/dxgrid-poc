@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { DxDataGridComponent } from 'devextreme-angular';
+import { DxDataGridModule } from 'devextreme-angular';
 
 @Component({
   selector: 'app-grid-view',
+  standalone: true,
+  imports: [DxDataGridModule],
   templateUrl: './grid-view.component.html',
   styleUrls: ['./grid-view.component.scss']
 })
