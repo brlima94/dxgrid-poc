@@ -1,30 +1,52 @@
 <dx-data-grid
   [dataSource]="dataSource"
   [showBorders]="true"
-  [editing]="{ mode: 'popup', allowUpdating: true }"
-  [columns]="[
-    { dataField: 'id', caption: 'ID', allowEditing: false },
-    { 
-      dataField: 'firstField', 
-      caption: 'First Field',
-      dataType: 'boolean',
-      editorOptions: { type: 'dxCheckBox' }
-    },
-    { 
-      dataField: 'secondField', 
-      caption: 'Second Field',
-      dataType: 'boolean',
-      editorOptions: { type: 'dxCheckBox' },
-      visible: showSecondField
-    },
-    { 
-      dataField: 'thirdField', 
-      caption: 'Third Field',
-      dataType: 'boolean',
-      editorOptions: { type: 'dxCheckBox' },
-      visible: showThirdField
-    }
-  ]"
-  (onEditorPreparing)="onEditorPreparing($event)"
-  (onRowUpdating)="onRowUpdating($event)">
+  (onEditorPreparing)="onEditorPreparing($event)">
+  <dxo-editing
+    mode="popup"
+    [allowUpdating]="true">
+    <dxo-popup
+      title="Edit Record"
+      [showTitle]="true"
+      width="400"
+      height="300">
+    </dxo-popup>
+  </dxo-editing>
+  <dxi-column
+    dataField="id"
+    caption="ID"
+    [allowEditing]="false">
+  </dxi-column>
+  <dxi-column
+    dataField="firstField"
+    caption="First Field"
+    dataType="boolean">
+    <dxo-lookup
+      [dataSource]="yesNoDataSource"
+      displayExpr="text"
+      valueExpr="value">
+    </dxo-lookup>
+  </dxi-column>
+  <dxi-column
+    dataField="secondField"
+    caption="Second Field"
+    dataType="boolean"
+    [visible]="showSecondField">
+    <dxo-lookup
+      [dataSource]="yesNoDataSource"
+      displayExpr="text"
+      valueExpr="value">
+    </dxo-lookup>
+  </dxi-column>
+  <dxi-column
+    dataField="thirdField"
+    caption="Third Field"
+    dataType="boolean"
+    [visible]="showThirdField">
+    <dxo-lookup
+      [dataSource]="yesNoDataSource"
+      displayExpr="text"
+      valueExpr="value">
+    </dxo-lookup>
+  </dxi-column>
 </dx-data-grid>
